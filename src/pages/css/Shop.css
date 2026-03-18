@@ -1,0 +1,31 @@
+.shopping-main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+@media(max-width: 1280) {
+  .shopping-main-content {
+    gap: 40px;
+  }
+}
+
+@media(max-width: 1024) {
+  .shopping-main-content {
+    gap: 30px;
+  }
+}
+
+@media(max-width: 800) {
+  .shopping-main-content {
+    gap: 20px;
+  }
+}
+
+@media(max-width: 500) {
+  .shopping-main-content {
+    gap: 10px;
+  }
+}
