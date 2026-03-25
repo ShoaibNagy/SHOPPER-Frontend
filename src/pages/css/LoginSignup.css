@@ -7,7 +7,7 @@
 }
 
 .loginsignup-container {
-  width: fit-content;
+  width: 700px;
   height: fit-content;
   background: white;
   margin: auto;
@@ -47,16 +47,24 @@
   cursor: pointer;
 }
 
-.loginsignup-login {
+.loginsignup-login
+.loginsignup-signup {
   margin-top: 20px;
   color: #5c5c5c;
   font-size: 18px;
   font-weight: 500;
 }
 
-.loginsignup-login span {
+.loginsignup-login span,
+.loginsignup-signup span {
   color: #ff4141;
   font-weight: 600;
+  cursor: pointer;
+}
+
+.loginsignup-signup span:hover,
+.loginsignup-login span:hover {
+  text-decoration: underline;
 }
 
 .loginsignup-agree {
