@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from "react";
-import all_product from "../assets/Frontend_Assets/all_product";
 
 export const ShopContext = createContext(null);
 
@@ -13,17 +12,23 @@ const getDefaultCart = () => {
 
 const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
-  const [all_products, setAllProducts] = useState([]);
-
-  useEffect(() => {
-    fetch('http://localhost:4000/allproducts')
-      .then((response) => response.json())
-      .then((data) => { setAllProducts(data) });
-  }, []);
+  const [all_product, setAllProducts] = useState([]);
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-    console.log(cartItems0);
+    if (localStorage.getItem('auth-token')) {
+      fetch('http://localhost:4000/addtocart', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/form-data',
+          'auth-token': `${localStorage.getItem('auth-token')}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({"itemId": itemId})
+      })
+      .then((response) => response.json())
+      .then((data) => setAllProducts(data))
+    }
   };
 
   const removeFromCart = (itemId) => {
@@ -39,7 +44,6 @@ const ShopContextProvider = (props) => {
       }
     }
 
-    console.log(all_products);
     return totalAmount;
   };
 
